@@ -4,23 +4,39 @@ import {AddTodoForm} from "./AddTodoForm.jsx";
 
 export const Todo = () => {
 
-    const [todos, setTodos] = useState([
-        {id: 1, todo: "Buy milk"},
-        {id: 2, todo: "Buy bread"},
-        {id: 3, todo: "Buy apples"},
+    const [warning, setWarning] = useState(false);
 
-    ])
+    const [todos, setTodos] = useState([
+        {id: uuidv4(), todo: "Buy milk"},
+        {id: uuidv4(), todo: "Buy bread"},
+        {id: uuidv4(), todo: "Buy apples"},
+    ]);
+
+    const warningMsg =
+        warning &&
+        <div className={"inline-block bg-red-600 px-6 py-2 rounded-full"}>
+            This input need to contain a todo.
+        </div>;
+
+    const handleTyping = () => {
+        if (warning) {
+            setWarning(false);
+        }
+    };
 
     const addNewTodo = (newTodo) => {
-        setTimeout([...todos, {
-            id: uuidv4(),
-            todo: newTodo,
-        }])
+        if (newTodo !== "" && newTodo.replace(/\s+/g, '') !== "") {
+            warning ? setWarning(false) : null;
+
+            setTodos([...todos, {
+                id: uuidv4(),
+                todo: newTodo,
+            }]);
+
+        } else {
+            setWarning(true);
+        }
     }
-
-    const randuuid = uuidv4();
-
-    console.log(randuuid)
 
     console.log(todos)
 
@@ -37,7 +53,8 @@ export const Todo = () => {
                 <ul>{todoMap}</ul>
             </div>
             <hr className={"my-5"}/>
-            <AddTodoForm addNewTodo={addNewTodo}></AddTodoForm>
+            {warningMsg}
+            <AddTodoForm addNewTodo={addNewTodo} handleTyping={handleTyping}></AddTodoForm>
         </>
     )
 }
