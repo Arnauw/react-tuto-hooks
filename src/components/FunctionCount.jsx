@@ -9,6 +9,12 @@ export const FunctionCount = () => {
         console.log("Updating title via useEffect");
         document.title = `You clicked ${count} times!`;
     }, [count])
+
+
+    useEffect(() => {
+        console.log("Updating title via useEffect ONLY ONCE AT MOUNT");
+        document.title = `You clicked ${count} times!`;
+    }, [])
     
     return (
         <>

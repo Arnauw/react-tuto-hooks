@@ -12,12 +12,12 @@ export class ClassCount extends Component {
 
 
     componentDidMount() {
-        console.log("Je suis dans componentDidMount");
+        console.log("I am in componentDidMount");
         document.title = `You clicked ${this.state.count} times!`;
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log("Je suis dans componentDidUpdate");
+        console.log("I am in componentDidUpdate");
 
         if (this.state.count !== prevState.count) {
             document.title = `You clicked ${this.state.count} times!`;
@@ -29,11 +29,14 @@ export class ClassCount extends Component {
             <>
                 <h2 className={"text-3xl"}>Class Count</h2>
                 <div className={"m-3"}>Count {this.state.count}</div>
+
                 <button
                     onClick={() => this.setState({count: this.state.count + 1})}
                     className={"bg-gray-900 border border-gray-500 rounded-md px-3 py-2 m-3"}
-                >Count + 1
+                >
+                    Count + 1
                 </button>
+
                 <input
                     className={"bg-gray-700 border border-gray-500 rounded-md px-3 py-2"}
                     type="text"
