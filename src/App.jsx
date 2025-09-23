@@ -32,7 +32,7 @@ function App() {
             <Test>Kikoo</Test>
             <hr className={"text-white m-5"}/>
             <UserContext.Provider value={user}>
-                <ColorContext.Provider value={"yellow"}>
+                <ColorContext.Provider value={"pink"}>
                     <Profile></Profile>
                 </ColorContext.Provider>
             </UserContext.Provider>
