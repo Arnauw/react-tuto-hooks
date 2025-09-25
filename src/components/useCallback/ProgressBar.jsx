@@ -14,6 +14,8 @@ const ProgressBar = ({progressBarState}) => {
                         bg-blue-500
                         bg-[length:20px_20px] 
                         [background-image:linear-gradient(45deg,rgba(255,255,255,0.3)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.3)_50%,rgba(255,255,255,0.3)_75%,transparent_75%,transparent)] 
+                        transition-all
+                        duration-500
                         w-[${progressBarState.value}%]
                         `}
                     ></div>
