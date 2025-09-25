@@ -6,7 +6,7 @@ export const CustomHooksMyContact = () => {
     const [search, setSearch] = useState("");
     
     const handleChange = (e) => {
-        
+        setSearch(e.target.value);
     }
 
     return (

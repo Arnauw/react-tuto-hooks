@@ -6,7 +6,7 @@ export const Search = ({search, searchHandler}) => {
                 type="text"
                 placeholder="Search..."
                 value={search}
-                onChange={() => {searchHandler}}
+                onChange={(e) => {searchHandler(e)}}
             />
 
         </>
