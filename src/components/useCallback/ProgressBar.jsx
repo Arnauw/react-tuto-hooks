@@ -7,7 +7,7 @@ const ProgressBar = ({progressBarState}) => {
             
             <div className="flex flex-col justify-center items-center gap-5 m-5 w-full">
                 <p className="text-2xl font-bold mb-2">{progressBarState.value} %</p>
-                <div className="w-full h-6 bg-gray-200 rounded overflow-hidden">
+                <div className="w-[50%] h-6 bg-gray-200 rounded overflow-hidden">
                     <div
                         className={
                         `h-full 
