@@ -6,7 +6,7 @@ import {TableUsers} from "./TableUsers.jsx";
 const msgDisplay = (msg, color) => {
     return (
         <>
-            <p className={`text-center text-[${color}]`}>
+            <p className={`m-5 text-center text-[${color}]`}>
                 {msg}
             </p>
         </>
@@ -18,6 +18,7 @@ export const CustomHooksMyContact = () => {
     const [search, setSearch] = useState("");
     const [users, setUsers] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [resultSearch, setResultSearch] = useState([]);
 
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/users')
@@ -27,9 +28,30 @@ export const CustomHooksMyContact = () => {
                 setIsLoading(false);
             })
             .catch(err => console.error(err.message));
-    }, [isLoading, users]);
+    }, []);
 
     useUpdateTitle(search);
+    
+    const filterUsers = () => {
+        const foundUsers = users.filter((user) => {
+            return Object.values(user)
+                .join(" ")
+                .toLowerCase()
+                .includes(search.toLowerCase());
+        });
+        setResultSearch(foundUsers);
+        // users.filter((user) => {
+        //     console.log(Object.values(user));
+        // })
+    }
+    
+    useEffect(() => {
+        if (search !== "") {
+            filterUsers();
+        } else {
+            setResultSearch([]);
+        }
+    }, [search])
 
     const handleChange = (e) => {
         setSearch(e.target.value);
@@ -47,8 +69,15 @@ export const CustomHooksMyContact = () => {
                                 searchHandler={handleChange}
                             >
                             </Search>
-                            <TableUsers users={users}></TableUsers>
-                        </>)
+                            {
+                                resultSearch.length === 0 && search !== "" ? 
+                                    msgDisplay("No results found", "red") :
+                                    search === "" ? 
+                                        msgDisplay("Make a new research", "green") :
+                                        <TableUsers users={resultSearch}></TableUsers>
+                            }
+                        </>
+                    )
             }
 
         </>

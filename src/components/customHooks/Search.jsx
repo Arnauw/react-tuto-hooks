@@ -1,6 +1,6 @@
 import {TableUsers} from "./TableUsers.jsx";
 
-export const Search = ({search, searchHandler, users}) => {
+export const Search = ({search, searchHandler,}) => {
     return (
         <>
             <input
