@@ -40,9 +40,6 @@ export const CustomHooksMyContact = () => {
                 .includes(search.toLowerCase());
         });
         setResultSearch(foundUsers);
-        // users.filter((user) => {
-        //     console.log(Object.values(user));
-        // })
     }
     
     useEffect(() => {
