@@ -1,4 +1,6 @@
-export const Search = ({search, searchHandler}) => {
+import {TableUsers} from "./TableUsers.jsx";
+
+export const Search = ({search, searchHandler, users}) => {
     return (
         <>
             <input
@@ -8,7 +10,6 @@ export const Search = ({search, searchHandler}) => {
                 value={search}
                 onChange={searchHandler}
             />
-
         </>
     )
 }
