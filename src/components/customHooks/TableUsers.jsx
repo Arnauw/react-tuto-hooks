@@ -15,20 +15,14 @@ export const TableUsers = ({users}) => {
                     users.map(({id, name, username, email, address}) => {
                         return (
                             <tr className={"text-center"} key={id}>
-                                <td>{name}</td>
-                                <td>{username}</td>
-                                <td>{email}</td>
-                                <td>{address.city} {address.suite} {address.city} {address.zipcode}</td>
+                                <td className={"text-center border border-white p-2"}>{name}</td>
+                                <td className={"text-center border border-white p-2"}>{username}</td>
+                                <td className={"text-center border border-white p-2"}>{email}</td>
+                                <td className={"text-center border border-white p-2"}>{address.city} {address.suite} {address.city} {address.zipcode}</td>
                             </tr>
                         )
                     })
                 }
-                <tr>
-                    <td className="text-center border border-white">Row 1, Cell 1</td>
-                    <td className="text-center border border-white">Row 1, Cell 2</td>
-                    <td className="text-center border border-white">Row 1, Cell 3</td>
-                    <td className="text-center border border-white">Row 1, Cell 3</td>
-                </tr>
                 </tbody>
             </table>
 

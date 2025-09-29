@@ -40,14 +40,17 @@ export const CustomHooksMyContact = () => {
             {
                 isLoading ?
                     msgDisplay("Loading ...", "red") :
-                    (<Search
-                        search={search}
-                        searchHandler={handleChange}
-                        // users={users}
-                    >
-                    </Search>)
+                    (
+                        <>
+                            <Search
+                                search={search}
+                                searchHandler={handleChange}
+                            >
+                            </Search>
+                            <TableUsers users={users}></TableUsers>
+                        </>)
             }
-            <TableUsers users={users}></TableUsers>
+
         </>
     )
 }
